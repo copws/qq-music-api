@@ -10,11 +10,11 @@
 
 ### 获取歌曲 URL
 
-**原 API：**https://u.y.qq.com/cgi-bin/musicu.fcg
+原 API：https://u.y.qq.com/cgi-bin/musicu.fcg
 
-**函数：**getMusicURL，
+函数：getMusicURL，
 
-**参数：**
+参数：
 
 songmid: 歌曲 MID（字符串）
 
@@ -28,31 +28,31 @@ server: 默认为 0，若为 0 使用 http://ws.stream.qqmusic.qq.com 服务器
 
 ### 获取歌单歌曲信息
 
-**原 API：**https://i.y.qq.com/qzone-music/fcg-bin/fcg_ucc_getcdinfo_byids_cp.fcg
+原 API：https://i.y.qq.com/qzone-music/fcg-bin/fcg_ucc_getcdinfo_byids_cp.fcg
 
-**函数：**getSongList，
+函数：getSongList，
 
-**参数：**
+参数：
 
 categoryID：歌单 ID
 
 ### 获取歌单名称
 
-**原 API：**https://i.y.qq.com/qzone-music/fcg-bin/fcg_ucc_getcdinfo_byids_cp.fcg
+原 API：https://i.y.qq.com/qzone-music/fcg-bin/fcg_ucc_getcdinfo_byids_cp.fcg
 
-**函数：**getSongListName，
+函数：getSongListName，
 
-**参数：**
+参数：
 
 categoryID：歌单 ID
 
 ### 用关键词搜索歌曲
 
-**原 API：**https://u.y.qq.com/cgi-bin/musicu.fcg
+原 API：https://u.y.qq.com/cgi-bin/musicu.fcg
 
-**函数：**searchWithKeyword，
+函数：searchWithKeyword，
 
-**参数：**
+参数：
 
 keyword: 关键词（字符串）
 
@@ -64,11 +64,11 @@ pageNum: 页面序号（不是页数，默认为 1）
 
 ### 获取歌曲歌词
 
-**原 API：**https://i.y.qq.com/lyric/fcgi-bin/fcg_query_lyric_new.fcg
+原 API：https://i.y.qq.com/lyric/fcgi-bin/fcg_query_lyric_new.fcg
 
-**函数：**getSongLyric，
+函数：getSongLyric，
 
-**参数：**
+参数：
 
 songmid: 歌曲 MID（字符串）
 
@@ -76,31 +76,31 @@ parse: 是否需要解析歌词（默认为 false)，若为 true 则调用 parse
 
 ### 获取专辑歌曲信息
 
-**原 API：**https://i.y.qq.com/v8/fcg-bin/fcg_v8_album_info_cp.fcg
+原 API：https://i.y.qq.com/v8/fcg-bin/fcg_v8_album_info_cp.fcg
 
-**函数：**getAlbumSongList，
+函数：getAlbumSongList，
 
-**参数：**
+参数：
 
 albummid: 专辑的 MID
 
 ### 获取专辑名称
 
-**原 API：**https://i.y.qq.com/v8/fcg-bin/fcg_v8_album_info_cp.fcg
+原 API：https://i.y.qq.com/v8/fcg-bin/fcg_v8_album_info_cp.fcg
 
-**函数：**getAlbumName
+函数：getAlbumName
 
-**参数：**
+参数：
 
 albummid: 专辑的 MID
 
 ### 获取 MV 信息
 
-**原 API：**https://u.y.qq.com/cgi-bin/musicu.fcg
+原 API：https://u.y.qq.com/cgi-bin/musicu.fcg
 
-**函数：**getMVInfo
+函数：getMVInfo
 
-**参数：**
+参数：
 
 vid: MV 的 VID
 
@@ -108,31 +108,31 @@ vid: MV 的 VID
 
 ### 获取歌手信息
 
-**原 API：**https://u.y.qq.com/cgi-bin/musicu.fcg
+原 API：https://u.y.qq.com/cgi-bin/musicu.fcg
 
-**函数：**getSingerInfo
+函数：getSingerInfo
 
-**参数：**
+参数：
 
 singermid: 歌手 MID
 
 ### 附赠小工具：获取专辑封面图
 
-**函数：**getAlbumCoverImage
+函数：getAlbumCoverImage
 
-**参数：**
+参数：
 
 albummid: 专辑的 MID
 
 ### 附赠小工具：解析歌词
 
-**函数：**parseLyric
+函数：parseLyric
 
-**参数：**
+参数：
 
 data：从 QQ 音乐申请来的数据
 
-**解析格式：**对象。ti、ar、al、by、offset 的有无取决于 QQ 音乐
+解析格式：对象。ti、ar、al、by、offset 的有无取决于 QQ 音乐
 
 ti: (title) 标题
 
