@@ -11,15 +11,8 @@
 //
 // songmid: 歌曲 MID（字符串）
 // quality: 歌曲品质（字符串），有 m4a、128、320（默认）可选，其中 128、320 为 MP3 格式，默认为 320
-// server: 默认为 0，若为 0 使用 http://aqqmusic.tc.qq.com/ 服务器，
-// 若为 1 使用 http://sjy6.stream.qqmusic.qq.com/ 服务器
 
-export let getMusicURL = async (
-  songmid,
-  quality = "320",
-  server = 0,
-  origin = false
-) => {
+export let getMusicURL = async (songmid, quality = "320", origin = false) => {
   return await fetch("https://u.y.qq.com/cgi-bin/musicu.fcg", {
     headers: {
       accept: "application/json, text/plain, */*",
@@ -54,14 +47,7 @@ export let getMusicURL = async (
     .then((res) => res.json())
     .then((data) => {
       if (origin) return data;
-      else {
-        purl = data.req_1.data.midurlinfo[0].purl;
-        if (server == 1) {
-          return "http://sjy6.stream.qqmusic.qq.com/" + purl;
-        } else {
-          return "http://aqqmusic.tc.qq.com/" + purl;
-        }
-      }
+      else return data.req_1.data.sip[0] + data.req_1.data.midurlinfo[0].purl;
     })
     .catch((err) => {
       console.log(err);

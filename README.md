@@ -22,10 +22,6 @@ songmid: 歌曲 MID（字符串）
 
 quality: 歌曲品质（字符串），有 m4a、128、320（默认）可选，其中 128、320 为 MP3 格式，默认为 320
 
-server: 默认为 0，若为 0 使用 http://aqqmusic.tc.qq.com/ 服务器
-
-若为 1 使用 http://sjy6.stream.qqmusic.qq.com/ 服务器
-
 ### 获取歌单歌曲信息
 
 原 API：https://i.y.qq.com/qzone-music/fcg-bin/fcg_ucc_getcdinfo_byids_cp.fcg
