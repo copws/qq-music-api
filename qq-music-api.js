@@ -1,25 +1,42 @@
 // QQ 音乐 API 合集
 // 作者：Copcin
+// 2025.9 更新
+// 所有 API 2025.9 确认可用
 
 // 所有 API 均有 origin 选项方便调试，默认为 false
 // 若 origin 为 true 则直接返回请求返回的 data
 
-// 获取音乐 URL
+// 获取音乐 URL（2025.9 重新抓包）
 // API：https://u.y.qq.com/cgi-bin/musicu.fcg
 //
 // songmid: 歌曲 MID（字符串）
 // quality: 歌曲品质（字符串），有 m4a、128、320（默认）可选，其中 128、320 为 MP3 格式，默认为 320
-// server: 默认为 0，若为 0 使用 http://ws.stream.qqmusic.qq.com 服务器，
-// 若为 1 使用 http://isure.stream.qqmusic.qq.com 服务器
-// 若为 2 使用 http://dl.stream.qqmusic.qq.com 服务器（非官方提供）
+// server: 默认为 0，若为 0 使用 http://aqqmusic.tc.qq.com/ 服务器，
+// 若为 1 使用 http://sjy6.stream.qqmusic.qq.com/ 服务器
+
 export let getMusicURL = async (
   songmid,
   quality = "320",
   server = 0,
   origin = false
 ) => {
-  return await fetch(
-    "https://u.y.qq.com/cgi-bin/musicu.fcg?format=json&data={%22req_0%22:{%22module%22:%22vkey.GetVkeyServer%22,%22method%22:%22CgiGetVkey%22,%22param%22:{%22filename%22:[%22PREFIXSONGMIDSONGMID.SUFFIX%22],%22guid%22:%2210000%22,%22songmid%22:[%22SONGMID%22],%22songtype%22:[0],%22uin%22:%220%22,%22loginflag%22:1,%22platform%22:%2220%22}},%22loginUin%22:%220%22,%22comm%22:{%22uin%22:%220%22,%22format%22:%22json%22,%22ct%22:24,%22cv%22:0}}"
+  return await fetch("https://u.y.qq.com/cgi-bin/musicu.fcg", {
+    headers: {
+      accept: "application/json, text/plain, */*",
+      "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+      "content-type": "application/json;charset=UTF-8",
+      priority: "u=1, i",
+      "sec-ch-ua":
+        '"Not;A=Brand";v="99", "Microsoft Edge";v="139", "Chromium";v="139"',
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": '"Windows"',
+      "sec-fetch-dest": "empty",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-site": "none",
+      "sec-fetch-storage-access": "active",
+    },
+    referrer: "https://y.qq.com/",
+    body: '{"req_1":{"module":"vkey.GetVkeyServer","method":"CgiGetVkey","param":{"filename":["PREFIXSONGMIDSONGMID.SUFFIX"],"guid":"10000","songmid":["SONGMID"],"songtype":[0],"uin":"0","loginflag":1,"platform":"20"}},"loginUin":"0","comm":{"uin":"0","format":"json","ct":24,"cv":0}}'
       .replaceAll("SONGMID", songmid)
       .replaceAll(
         "PREFIX",
@@ -29,19 +46,20 @@ export let getMusicURL = async (
           ? "M500"
           : "M800"
       )
-      .replaceAll("SUFFIX", quality.toLowerCase() == "m4a" ? "m4a" : "mp3")
-  )
+      .replaceAll("SUFFIX", quality.toLowerCase() == "m4a" ? "m4a" : "mp3"),
+    method: "POST",
+    mode: "cors",
+    credentials: "include",
+  })
     .then((res) => res.json())
     .then((data) => {
       if (origin) return data;
       else {
-        purl = data.req_0.data.midurlinfo[0].purl;
+        purl = data.req_1.data.midurlinfo[0].purl;
         if (server == 1) {
-          return "http://isure.stream.qqmusic.qq.com/" + purl;
-        } else if (server == 2) {
-          return "http://dl.stream.qqmusic.qq.com/" + purl;
+          return "http://sjy6.stream.qqmusic.qq.com/" + purl;
         } else {
-          return "http://ws.stream.qqmusic.qq.com/" + purl;
+          return "http://aqqmusic.tc.qq.com/" + purl;
         }
       }
     })
