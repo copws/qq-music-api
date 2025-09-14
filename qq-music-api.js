@@ -19,10 +19,7 @@ export let getMusicURL = async (songmid, quality = "320", origin = false) => {
       "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
       "content-type": "application/json;charset=UTF-8",
       priority: "u=1, i",
-      "sec-ch-ua":
-        '"Not;A=Brand";v="99", "Microsoft Edge";v="139", "Chromium";v="139"',
       "sec-ch-ua-mobile": "?0",
-      "sec-ch-ua-platform": '"Windows"',
       "sec-fetch-dest": "empty",
       "sec-fetch-mode": "cors",
       "sec-fetch-site": "none",
