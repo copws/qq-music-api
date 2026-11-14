@@ -1,6 +1,6 @@
 // QQ 音乐 API 合集
 // 作者：Copcin
-// 2025.9 更新
+// 2026.11 更新
 // 所有 API 2025.9 确认可用
 
 // 所有 API 均有 origin 选项方便调试，默认为 false
@@ -12,7 +12,7 @@
 // songmid: 歌曲 MID（字符串）
 // quality: 歌曲品质（字符串），有 m4a、128、320（默认）可选，其中 128、320 为 MP3 格式，默认为 320
 
-export let getMusicURL = async (songmid, quality = "320", origin = false) => {
+export let getMusicURL = async (songmid, quality = "128", origin = false) => {
   return await fetch("https://u.y.qq.com/cgi-bin/musicu.fcg", {
     headers: {
       accept: "application/json, text/plain, */*",
