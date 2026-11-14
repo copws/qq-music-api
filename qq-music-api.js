@@ -10,7 +10,7 @@
 // API：https://u.y.qq.com/cgi-bin/musicu.fcg
 //
 // songmid: 歌曲 MID（字符串）
-// quality: 歌曲品质（字符串），有 m4a、128、320（默认）可选，其中 128、320 为 MP3 格式，默认为 320
+// quality: 歌曲品质（字符串），有 m4a、128（默认）可选，其中 128 为 MP3 格式
 
 export let getMusicURL = async (songmid, quality = "128", origin = false) => {
   return await fetch("https://u.y.qq.com/cgi-bin/musicu.fcg", {
